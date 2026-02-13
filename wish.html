@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impossible No Button</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family: 'Roboto', sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background: linear-gradient(135deg, #ff9a9e, #f6d365, #fbc2eb);
+  overflow:hidden;
+  color: #fff;
+  position: relative;
+}
+
+/* General page styling */
+.page {
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  width:100%;
+  border-radius:20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  transition: all 0.5s ease;
+}
+
+/* First page smaller container */
+#page1 {
+  max-width: 400px;  
+  padding: 20px 30px 30px; 
+}
+
+/* Second page normal size */
+#page2 {
+  max-width: 650px;
+  padding: 30px 50px 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page.active { display:flex; }
+
+/* Heading style */
+h1 {
+  font-family:'Great Vibes', cursive;
+  font-size: 1.5em;
+  margin: 15px 0;
+  letter-spacing: 0.1em;
+  color: #bc0202;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  line-height:1.2;
+}
+
+.second-page {
+    font-size: 2.2em;
+}
+
+/* Paragraph style */
+p {
+  font-size: 1.3em;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Images circular */
+.page img {
+  max-width: 200px;
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid rgba(255,255,255,0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Floating teddy animation only for first page image */
+#page1 img {
+  animation: float 3s ease-in-out infinite;
+}
+
+#page2 img {
+  margin-bottom: 30px;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Button container */
+.button-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+/* Button styling */
+.btn {
+  position: absolute;
+  padding: 12px 25px;
+  background: #ff4b5c;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1em;
+  transition: top 0.2s ease, left 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn:hover {
+  transform: scale(1.15);
+}
+
+#noBtn {
+  background:#f9a825;
+  color:#000;
+  pointer-events: none;
+}
+
+/* Falling hearts animation */
+.heart {
+  position: absolute;
+  color: darkred;
+  font-size: 1em;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Fullscreen flashing hearts */
+.flash-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 3em;
+  color: darkred;
+  opacity: 0;
+  animation: flash 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes flash {
+  0% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+  50% { opacity: 1; transform: scale(1.5) translate(-50%, -50%); }
+  100% { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+}
+</style>
+</head>
+<body>
+
+<!-- Page 1 (smaller container) -->
+<div class="page active" id="page1">
+  <img src="https://i.pinimg.com/1200x/5c/25/7d/5c257d4a7289da64979b4238669e190f.jpg" alt="Cute Teddy Bear">
+  
+  <p>"Being around you makes my heart feel lighter, my thoughts brighter, and my whole world somehow better than it was before... I just have one important question."</p>
+  <h2>Will You Be My Valentine? ❤️</h2>
+  
+  <div class="button-container">
+    <button class="btn" id="yesBtn">Yes 💘</button>
+    <button class="btn" id="noBtn">No 😅</button>
+  </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+  <img src="https://i.pinimg.com/736x/78/81/7f/78817f444e604ec1b0b7cee46433d9a1.jpg" alt="Valentine Couple">
+  
+  <h1 class="second-page">Happy Valentine’s Day! 💖</h1>
+  <p>"Every moment with you feels like a dream I never want to wake up from, and every heartbeat reminds me that my world is brighter with you in it." 💖🍫💌</p>
+</div>
+
+<script>
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const page1 = document.getElementById('page1');
+const page2 = document.getElementById('page2');
+
+const container = noBtn.parentElement.getBoundingClientRect();
+let angle = 0;
+
+// Center positions
+let containerCenterX = container.width / 2;
+let containerCenterY = container.height / 2;
+
+// Start positions
+let yesLeft = containerCenterX - 100;
+let yesTop = containerCenterY - 20;
+let noLeft = containerCenterX + 50;
+let noTop = containerCenterY - 20;
+
+yesBtn.style.left = yesLeft + 'px';
+yesBtn.style.top = yesTop + 'px';
+noBtn.style.left = noLeft + 'px';
+noBtn.style.top = noTop + 'px';
+
+let lastLeft = noLeft;
+let lastTop = noTop;
+
+// Move No button only when cursor is near
+function moveNoButton(cursorX, cursorY) {
+  const rect = noBtn.getBoundingClientRect();
+  const btnWidth = rect.width;
+  const btnHeight = rect.height;
+
+  const btnCenterX = rect.left + btnWidth / 2;
+  const btnCenterY = rect.top + btnHeight / 2;
+
+  const dx = btnCenterX - cursorX;
+  const dy = btnCenterY - cursorY;
+  const distance = Math.sqrt(dx*dx + dy*dy);
+
+  const safeDistance = 120;
+
+  if(distance < safeDistance) {
+    angle += 0.5;
+    const zigZagX = Math.cos(angle) * 100;
+    const zigZagY = Math.sin(angle * 2) * 50;
+
+    let newLeft = lastLeft + (dx / (distance || 1)) * 150 + zigZagX;
+    let newTop = lastTop + (dy / (distance || 1)) * 100 + zigZagY;
+
+    newLeft = Math.max(0, Math.min(newLeft, container.width - btnWidth));
+    newTop = Math.max(0, Math.min(newTop, container.height - btnHeight));
+
+    noBtn.style.left = newLeft + 'px';
+    noBtn.style.top = newTop + 'px';
+
+    lastLeft = newLeft;
+    lastTop = newTop;
+  }
+}
+
+// Track mouse
+document.addEventListener('mousemove', e => moveNoButton(e.clientX, e.clientY));
+
+// Yes button click
+yesBtn.addEventListener('click', () => {
+  page1.classList.remove('active');
+  page2.classList.add('active');
+  createHearts();
+  createFlashHearts();
+});
+
+// Falling hearts
+function createHearts() {
+  for(let i=0;i<30;i++){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = '❤️';
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.fontSize = (10 + Math.random()*20) + 'px';
+    heart.style.animationDuration = (3 + Math.random()*3) + 's';
+    page2.appendChild(heart);
+  }
+}
+
+// Flashing hearts
+function createFlashHearts() {
+  for(let i=0;i<10;i++){
+    const flash = document.createElement('div');
+    flash.classList.add('flash-heart');
+    flash.style.animationDelay = (i*0.3)+'s';
+    page2.appendChild(flash);
+  }
+}
+</script>
+</body>
+</html>
